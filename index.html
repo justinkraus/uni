@@ -10,6 +10,29 @@
 .bubbles:hover {
   stroke: black;
 }
+
+div.tooltip {   
+position: absolute;         
+text-align: center;                 
+padding: 2px;               
+font: 12px sans-serif;      
+background: lightsteelblue; 
+border: 0px;        
+border-radius: 8px;         
+pointer-events: none;           
+}
+
+.container{
+    display: flex;
+    flex-wrap: nowrap;
+    flex: 0 0 25em;
+}
+#infoText{
+    margin: 4% 4%;
+    /*margin: 50px 10px 50px 50px;*/
+/*    font-size: 10px;*/
+}
+
 </style>
 
 <!-- Load d3.js -->
@@ -17,15 +40,21 @@
 
 <!-- Load color scale -->
 <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
-
+<div class="container">
+<div id="my_dataviz"></div>
+<div id="infoText">
 <!-- Create a div where the graph will take place -->
-<h1>Correlation of R&D Spending with Research Output</h1>
+<h1>Observing R&D Spending with Research Output</h1>
 <p>Size = R&D Spending in 2017</p>
 <p>Color = Higher National Rank (Red) - Lower National Rank (blue)</p>
 <p>X-axis = Number of patents ranked</p>
 <p>Y-axis = Rank of Research quality </p>
+<button id="ReverseRadius">Reverse Radius</button>
+<button id="Radius">Normal Radius</button>
 
-<div id="my_dataviz"></div>
+</div>
+
+</div>
 
 <!-- A bit of CSS: change stroke color of circle on hover (white -> black) -->
 
@@ -46,7 +75,7 @@ var svg = d3.select("#my_dataviz")
           "translate(" + margin.left + "," + margin.top + ")");
 
 //Read the data
-d3.csv("university_iter2.csv", function(data) {
+d3.csv("university_iter4.csv", function(data) {
 
   // ---------------------------//
   //       AXIS  AND SCALE      //
@@ -54,42 +83,76 @@ d3.csv("university_iter2.csv", function(data) {
 
   // Add X axis
   var x = d3.scaleLinear()
-    .domain([0, 270])
+    .domain([0, 260])
     .range([ 0, width ]);
   svg.append("g")
     .attr("transform", "translate(0," + height + ")")
-    .call(d3.axisBottom(x).ticks(1));
+    .call(d3.axisBottom(x).ticks(0));
 
   // Add X axis label:
   svg.append("text")
+    .attr("text-anchor", "end")
+    .attr("x", width/2 + margin.left/4 )
+    .attr("y", height + margin.bottom/1.75 )
+    .text("Patents")
+    .style("font-size", "2em");
+
+  svg.append("text")
       .attr("text-anchor", "end")
-      .attr("x", 0 + margin.left/2)
-      .attr("y", height + margin.bottom )
+      .attr("x", 0 + margin.left/1.75)
+      .attr("y", height + margin.bottom/2 )
       .text("More Patents");
+
+    svg.append("text")
+      .attr("text-anchor", "end")
+      .attr("x", width)
+      .attr("y", height + margin.bottom/2 )
+      .text("Fewer Patents");
+
 
   // Add Y axis
   var y = d3.scaleLinear()
-    .domain([0, 1960])
+    .domain([0, 3800])
     .range([ height, 0]);
   svg.append("g")
-    .call(d3.axisLeft(y));
+    .call(d3.axisLeft(y).ticks(0));
 
   // Add Y axis label:
   svg.append("text")
+    .attr("text-anchor", "end")
+    .attr("x", 0 - margin.left/10)
+    .attr("y", height/2 )
+    .text("Research")
+    .style("font-size", "2em")
+    // .attr("text-anchor", "start")
+
+
+  svg.append("text")
       .attr("text-anchor", "end")
-      .attr("x", 0 - margin.left)
+      .attr("x", 0 - margin.left/10)
       .attr("y", height )
       .text("Better Research")
-      .attr("text-anchor", "start")
+      // .attr("text-anchor", "start")
+
+  svg.append("text")
+    .attr("text-anchor", "end")
+    .attr("x", 0 - margin.left/10)
+    .attr("y", 0 )
+    .text("Worse Research")
+    // .attr("text-anchor", "start")
 
   // Add a scale for bubble size
   var z = d3.scaleLinear()
-    .domain([0, 595])
+    .domain([0, 255])
     .range([ 0, 20]);
+
+  var z1 = d3.scaleLinear()
+    .domain([0, 255])
+    .range([ 20, 0]);
 
   // Add a scale for bubble color
   var myColor = d3.scaleLinear()
-    .domain([0, 357])
+    .domain([0, 360])
     .range(d3.schemeSet1);
 
 
@@ -114,14 +177,15 @@ d3.csv("university_iter2.csv", function(data) {
       .duration(200)
     tooltip
       .style("opacity", 1)
-      .html("Country: " + d.InstitutionName)
-      .style("left", (d3.mouse(this)[0]+30) + "px")
-      .style("top", (d3.mouse(this)[1]+30) + "px")
+      .html(d.InstitutionName)
+      .style("left", (d3.mouse(this)[0]) + "px")
+      .style("top", (d3.mouse(this)[1]) + "px")
+      .style("position", "absolute")
   }
   var moveTooltip = function(d) {
     tooltip
-      .style("left", (d3.mouse(this)[0]+30) + "px")
-      .style("top", (d3.mouse(this)[1]+30) + "px")
+      .style("left", (d3.mouse(this)[0]) + "px")
+      .style("top", (d3.mouse(this)[1]) + "px")
   }
   var hideTooltip = function(d) {
     tooltip
@@ -169,6 +233,22 @@ d3.csv("university_iter2.csv", function(data) {
     .on("mousemove", moveTooltip )
     .on("mouseleave", hideTooltip )
 
+
+    // ---------------------------//
+  //       Transition Radius Sizes              //
+  // ---------------------------//
+
+   d3.select('#ReverseRadius').on('click', function() {       
+    d3.selectAll('circle').transition()
+        .duration(1000)
+        .attr("r", function (d) { return z1(d.RDRank); } )
+    })
+
+    d3.select('#Radius').on('click', function () {       
+    d3.selectAll('circle').transition()
+        .duration(1000)
+        .attr("r", function (d) { return z(d.RDRank); } )
+    })
 
 
     // ---------------------------//
