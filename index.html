@@ -40,17 +40,18 @@ pointer-events: none;
 
 <!-- Load color scale -->
 <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.25.6/d3-legend.min.js"></script>
 <div class="container">
 <div id="my_dataviz"></div>
 <div id="infoText">
 <!-- Create a div where the graph will take place -->
-<h1>Observing R&D Spending with Research Output</h1>
+<h1>University Research and Development</h1>
+<h2>Comparing Spending with Output</h2>
 <p>Size = R&D Spending in 2017</p>
 <p>Color = Higher National Rank (Red) - Lower National Rank (blue)</p>
 <p>X-axis = Number of patents ranked</p>
 <p>Y-axis = Rank of Research quality </p>
-<button id="ReverseRadius">Reverse Radius</button>
-<button id="Radius">Normal Radius</button>
+<button id="Radius">Flip Radius</button>
 
 </div>
 
@@ -131,24 +132,24 @@ d3.csv("university_iter4.csv", function(data) {
       .attr("text-anchor", "end")
       .attr("x", 0 - margin.left/10)
       .attr("y", height )
-      .text("Better Research")
+      .text("Top Research")
       // .attr("text-anchor", "start")
 
   svg.append("text")
     .attr("text-anchor", "end")
     .attr("x", 0 - margin.left/10)
     .attr("y", 0 )
-    .text("Worse Research")
+    .text("Bottom Research")
     // .attr("text-anchor", "start")
 
   // Add a scale for bubble size
   var z = d3.scaleLinear()
-    .domain([0, 255])
-    .range([ 0, 20]);
+    .domain([1, 255])
+    .range([ 2, 20]);
 
   var z1 = d3.scaleLinear()
-    .domain([0, 255])
-    .range([ 20, 0]);
+    .domain([1, 255])
+    .range([ 20, 2]);
 
   // Add a scale for bubble color
   var myColor = d3.scaleLinear()
@@ -223,7 +224,7 @@ d3.csv("university_iter4.csv", function(data) {
     .data(data)
     .enter()
     .append("circle")
-      .attr("class", function(d) { return "bubbles " + d.InstitutionName })
+      .attr("class", function(d) { return "bubbles"})
       .attr("cx", function (d) { return x(d.PatentsRank); } )
       .attr("cy", function (d) { return y(d.ResearchRank); } )
       .attr("r", function (d) { return z(d.RDRank); } )
@@ -237,97 +238,98 @@ d3.csv("university_iter4.csv", function(data) {
     // ---------------------------//
   //       Transition Radius Sizes              //
   // ---------------------------//
+    var radiusVar = "start"
 
-   d3.select('#ReverseRadius').on('click', function() {       
-    d3.selectAll('circle').transition()
-        .duration(1000)
-        .attr("r", function (d) { return z1(d.RDRank); } )
-    })
 
-    d3.select('#Radius').on('click', function () {       
-    d3.selectAll('circle').transition()
+    d3.select('#Radius').on('click', function () {
+
+      console.log(radiusVar)
+    if (radiusVar === 'reverse') {
+
+    d3.selectAll('circle.bubbles').transition()
         .duration(1000)
         .attr("r", function (d) { return z(d.RDRank); } )
+
+      d3.selectAll('g.sizeLegend')
+      .remove()
+
+      var sizeLegend = d3.legendSize()
+        .scale(z)
+        .shape("circle")
+        .cells(3)
+        .shapePadding(15)
+        .labels(["Top", "Mid", "Bottom"])
+        .title("R&D Spending");
+
+    svg.append("g")
+        .attr("class", "sizeLegend")
+        .attr("transform", "translate(750,600)")
+        .call(sizeLegend)
+
+      return radiusVar = 'normal'
+
+      }
+    else if (radiusVar === 'normal' | radiusVar == 'start') {
+    d3.selectAll('circle.bubbles').transition()
+        .duration(1000)
+        .attr("r", function (d) { return z1(d.RDRank); } )
+
+      d3.selectAll('g.sizeLegend')
+      .remove()
+
+      var sizeLegend1 = d3.legendSize()
+          .scale(z1)
+          .shape("circle")
+          .cells(3)
+          .shapePadding(5)
+          .labels(["Top", "Mid", "Bottom"])
+          .title("R&D Spending");
+
+      svg.append("g")
+          .attr("class", "sizeLegend")
+          .attr("transform", "translate(750,600)")
+          .call(sizeLegend1)
+
+        return radiusVar = 'reverse'
+
+    }
     })
+
 
 
     // ---------------------------//
     //       LEGEND              //
     // ---------------------------//
+    // Color Legend
+    var colorLegend = d3.legendColor()
+        .scale(myColor)
+        .shape("circle")
+        .cells(3)
+        .labelFormat(d3.format(".0f"))
+        .orient("vertical")
+        .shapePadding(5)
+        .labels(["Top", "Mid", "Bottom"])
+        .title("National Rank");
 
-    // Add legend: circles
-    // var valuesToShow = [10000000, 100000000, 1000000000]
-    // var xCircle = 390
-    // var xLabel = 440
-    // svg
-    //   .selectAll("legend")
-    //   .data(valuesToShow)
-    //   .enter()
-    //   .append("circle")
-    //     .attr("cx", xCircle)
-    //     .attr("cy", function(d){ return height - 100 - z(d) } )
-    //     .attr("r", function(d){ return z(d) })
-    //     .style("fill", "none")
-    //     .attr("stroke", "black")
+    svg.append("g")
+        .attr("class", "colorLegend")
+        .attr("transform", "translate(750,475)")
+        // .attr("x", 1000-100)
+        // .attr("y", 100)
+        .call(colorLegend);
 
-    // // Add legend: segments
-    // svg
-    //   .selectAll("legend")
-    //   .data(valuesToShow)
-    //   .enter()
-    //   .append("line")
-    //     .attr('x1', function(d){ return xCircle + z(d) } )
-    //     .attr('x2', xLabel)
-    //     .attr('y1', function(d){ return height - 100 - z(d) } )
-    //     .attr('y2', function(d){ return height - 100 - z(d) } )
-    //     .attr('stroke', 'black')
-    //     .style('stroke-dasharray', ('2,2'))
+      var sizeLegend = d3.legendSize()
+        .scale(z)
+        .shape("circle")
+        .cells(3)
+        .shapePadding(15)
+        .labels(["Top", "Mid", "Bottom"])
+        .title("R&D Spending");
 
-    // // Add legend: labels
-    // svg
-    //   .selectAll("legend")
-    //   .data(valuesToShow)
-    //   .enter()
-    //   .append("text")
-    //     .attr('x', xLabel)
-    //     .attr('y', function(d){ return height - 100 - z(d) } )
-    //     .text( function(d){ return d/1000000 } )
-    //     .style("font-size", 10)
-    //     .attr('alignment-baseline', 'middle')
-
-    // // Legend title
-    // svg.append("text")
-    //   .attr('x', xCircle)
-    //   .attr("y", height - 100 +30)
-    //   .text("Population (M)")
-    //   .attr("text-anchor", "middle")
-
-    // Add one dot in the legend for each name.
-    // var size = 20
-    // var allgroups = ["Asia", "Europe", "Americas", "Africa", "Oceania"]
-    // svg.selectAll("myrect")
-    //   .data(allgroups)
-    //   .enter()
-    //   .append("circle")
-    //     .attr("cx", 390)
-    //     .attr("cy", function(d,i){ return 10 + i*(size+5)}) // 100 is where the first dot appears. 25 is the distance between dots
-    //     .attr("r", 7)
-    //     .style("fill", function(d){ return myColor(d)})
-    //     .on("mouseover", highlight)
-    //     .on("mouseleave", noHighlight)
-
-    // // Add labels beside legend dots
-    // svg.selectAll("mylabels")
-    //   .data(allgroups)
-    //   .enter()
-    //   .append("text")
-    //     .attr("x", 390 + size*.8)
-    //     .attr("y", function(d,i){ return i * (size + 5) + (size/2)}) // 100 is where the first dot appears. 25 is the distance between dots
-    //     .style("fill", function(d){ return myColor(d)})
-    //     .text(function(d){ return d})
-    //     .attr("text-anchor", "left")
-    //     .style("alignment-baseline", "middle")
-    //     .on("mouseover", highlight)
-    //     .on("mouseleave", noHighlight)
+    svg.append("g")
+        .attr("class", "sizeLegend")
+        .attr("transform", "translate(750,600)")
+        .call(sizeLegend)
+    
   })
 </script>
