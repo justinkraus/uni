@@ -28,9 +28,15 @@ pointer-events: none;
     flex: 0 0 25em;
 }
 #infoText{
-    margin: 4% 4%;
+    margin: 0% 4%;
     /*margin: 50px 10px 50px 50px;*/
 /*    font-size: 10px;*/
+}
+
+h2 {
+  color: darkgrey;
+  font-style: italic;
+  margin: -.75em 0px 0px 0px;
 }
 
 </style>
@@ -42,22 +48,20 @@ pointer-events: none;
 <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.25.6/d3-legend.min.js"></script>
 <div class="container">
-<div id="my_dataviz"></div>
-<div id="infoText">
-<!-- Create a div where the graph will take place -->
-<h1>University Research and Development</h1>
-<h2>Comparing Spending with Output</h2>
-<p>Size = R&D Spending in 2017</p>
-<p>Color = Higher National Rank (Red) - Lower National Rank (blue)</p>
-<p>X-axis = Number of patents ranked</p>
-<p>Y-axis = Rank of Research quality </p>
-<button id="Radius">Flip Radius</button>
+  <div id="my_dataviz"></div>
+  <div id="infoText">
+    <h1>Efficient R&D</h1>
+    <h2>Comparing University Research and Development Output with Spending</h2>
+    <h3>Research and Development</h3>
+    <p>Research and development (R&D) is a competitive feature of modern universities. Better R&D leads to improved reputation and connections with private industry.</p>
+    <p>R&D is shown on the axes as the number of patents and quality of the research program (influential citations in highly regarded scientific journals). Bubble colors correspond to the national rank of the University.</p>
+    <h3>Spending</h3>
+    <p>Spending is reflected in the size of the bubbles. Click the button to flip how the spending scale is reflected.</p>
+    <button id="Radius">Flip Radius</button>
+    <p><a href="https://github.com/justinkraus/uni">Code and Methodology</a></p>
+  </div>
 
 </div>
-
-</div>
-
-<!-- A bit of CSS: change stroke color of circle on hover (white -> black) -->
 
 <script>
 
@@ -100,15 +104,15 @@ d3.csv("university_iter4.csv", function(data) {
 
   svg.append("text")
       .attr("text-anchor", "end")
-      .attr("x", 0 + margin.left/1.75)
+      .attr("x", 0 + margin.left/4)
       .attr("y", height + margin.bottom/2 )
-      .text("More Patents");
+      .text("More");
 
     svg.append("text")
       .attr("text-anchor", "end")
       .attr("x", width)
       .attr("y", height + margin.bottom/2 )
-      .text("Fewer Patents");
+      .text("Less");
 
 
   // Add Y axis
@@ -132,14 +136,14 @@ d3.csv("university_iter4.csv", function(data) {
       .attr("text-anchor", "end")
       .attr("x", 0 - margin.left/10)
       .attr("y", height )
-      .text("Top Research")
+      .text("Higher Regard")
       // .attr("text-anchor", "start")
 
   svg.append("text")
     .attr("text-anchor", "end")
     .attr("x", 0 - margin.left/10)
     .attr("y", 0 )
-    .text("Bottom Research")
+    .text("Lower Regard")
     // .attr("text-anchor", "start")
 
   // Add a scale for bubble size
@@ -258,7 +262,7 @@ d3.csv("university_iter4.csv", function(data) {
         .shape("circle")
         .cells(3)
         .shapePadding(15)
-        .labels(["Top", "Mid", "Bottom"])
+        .labels(["High", "Mid", "Low"])
         .title("R&D Spending");
 
     svg.append("g")
@@ -282,7 +286,7 @@ d3.csv("university_iter4.csv", function(data) {
           .shape("circle")
           .cells(3)
           .shapePadding(5)
-          .labels(["Top", "Mid", "Bottom"])
+          .labels(["High", "Mid", "Low"])
           .title("R&D Spending");
 
       svg.append("g")
@@ -323,13 +327,19 @@ d3.csv("university_iter4.csv", function(data) {
         .shape("circle")
         .cells(3)
         .shapePadding(15)
-        .labels(["Top", "Mid", "Bottom"])
+        .labels(["High", "Mid", "Low"])
         .title("R&D Spending");
 
     svg.append("g")
         .attr("class", "sizeLegend")
         .attr("transform", "translate(750,600)")
         .call(sizeLegend)
+
+    // svg.append("text")
+    //   .attr("text-anchor", "end")
+    //   .attr("x", 852)
+    //   .attr("y", 425 )
+    //   .text("Name on Hover")
     
   })
 </script>
