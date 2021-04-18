@@ -1,0 +1,233 @@
+﻿InstitutionName,RDRank,PatentsRank,ResearchRank,NationalRank,RanktoCost,RanktoCostRank
+Stanford University,6,2,2,3,0.666666667,1
+Massachusetts Institute of Technology,8,1,7,2,1,2
+Yeshiva University,208,51,230,71,1.350961538,3
+University of Chicago,29,21,22,7,1.482758621,4
+Columbia University in the City of New York,11,7,15,4,2,5
+Princeton University,40,24,71,5,2.375,6
+Harvard University,5,11,1,1,2.4,7
+California Institute of Technology,32,3,74,9,2.40625,8
+Northwestern University,16,19,29,14,3,9
+Brown University,60,57,131,37,3.133333333,10
+Boston University,30,33,66,49,3.3,11
+University of Utah,33,10,106,53,3.515151515,12
+Rice University,77,46,235,58,3.649350649,13
+Baylor University,137,32,475,138,3.700729927,14
+Cornell University,7,5,24,11,4.142857143,15
+Ohio State University,12,17,34,36,4.25,16
+University of Florida,14,6,57,47,4.5,17
+University of Rochester,37,28,145,43,4.675675676,18
+Northeastern University,82,60,324,106,4.682926829,19
+Wake Forest University,71,63,278,79,4.802816901,20
+Tufts University,57,53,225,55,4.877192982,21
+University of Oregon,98,100,386,109,4.959183673,22
+Yale University,9,25,20,8,5,23
+Brigham Young University,121,67,543,155,5.041322314,24
+Thomas Jefferson University,81,34,389,118,5.222222222,25
+Drexel University,84,58,390,110,5.333333333,26
+University of Houston,76,68,340,86,5.368421053,27
+University of Delaware,70,44,332,103,5.371428571,28
+Pennsylvania State University,13,20,51,33,5.461538462,29
+Wayne State University,56,48,260,97,5.5,30
+University of New Mexico,51,35,247,101,5.529411765,31
+Emory University,18,37,63,54,5.555555556,32
+University of Connecticut,48,39,229,90,5.583333333,33
+University of Southern California,15,15,69,30,5.6,34
+Northern Illinois University,154,126,748,184,5.675324675,35
+New York University,10,12,45,19,5.7,36
+University of Vermont,89,85,427,127,5.752808989,37
+Southern Methodist University,135,128,651,100,5.77037037,38
+University of Oklahoma,46,42,224,360,5.782608696,39
+Loyola University Chicago,125,117,614,163,5.848,40
+Case Western Reserve University,31,38,144,56,5.870967742,41
+Carnegie Mellon University,39,29,200,46,5.871794872,42
+University of Mississippi,86,91,414,126,5.872093023,43
+Florida State University,45,43,222,92,5.888888889,44
+Boston College,111,123,539,140,5.963963964,45
+University of Virginia,26,31,125,38,6,46
+Rush University,101,146,463,141,6.02970297,47
+Adelphi University,254,210,1325,360,6.043307087,48
+University of Iowa,25,23,132,59,6.2,49
+Weber State University,235,191,1272,360,6.225531915,50
+Georgetown University,59,59,313,76,6.305084746,51
+Lehigh University,128,88,728,135,6.375,52
+Purdue University,19,18,104,34,6.421052632,53
+Kent State University,122,80,704,180,6.426229508,54
+University of Notre Dame,58,89,284,63,6.431034483,55
+Brandeis University,103,84,588,69,6.524271845,56
+East Carolina University,139,109,800,193,6.539568345,57
+Manhattan College,236,221,1325,231,6.550847458,58
+Illinois Institute of Technology,133,81,797,149,6.601503759,59
+University of Kansas,43,61,224,66,6.627906977,60
+Oregon Health & Science University,38,50,202,88,6.631578947,61
+Saint Louis University,112,231,512,120,6.633928571,62
+Grand Valley State University,193,214,1069,360,6.647668394,63
+Miami University,159,139,926,185,6.698113208,64
+Virginia Commonwealth University,54,72,291,84,6.722222222,65
+George Mason University,90,137,471,128,6.755555556,66
+Florida Institute of Technology,158,153,924,216,6.816455696,67
+New York Medical College,169,130,1029,234,6.857988166,68
+University of Miami,35,70,172,77,6.914285714,69
+Michigan State University,17,13,105,61,6.941176471,70
+Tulane University,72,77,426,121,6.986111111,71
+Pace University,198,215,1175,360,7.02020202,72
+New York Institute of Technology,210,106,1371,360,7.033333333,73
+Oregon State University,49,71,274,89,7.040816327,74
+University of Akron,124,45,835,201,7.096774194,75
+University of Louisville,73,90,431,129,7.136986301,76
+University of Denver,146,195,854,183,7.184931507,77
+University of Toledo,114,65,758,189,7.219298246,78
+"George Washington University, The",52,94,287,102,7.326923077,79
+Oakland University,173,152,1119,253,7.346820809,80
+Bowling Green State University,174,136,1156,258,7.425287356,81
+Syracuse University,79,78,510,133,7.443037975,82
+Loma Linda University,147,75,1026,232,7.489795918,83
+Dartmouth College,42,54,263,23,7.547619048,84
+Creighton University,140,124,935,219,7.564285714,85
+University of Nebraska Medical Center,75,30,538,157,7.573333333,86
+Kansas State University,63,56,422,124,7.587301587,87
+Pepperdine University,214,243,1400,202,7.677570093,88
+Colorado School of Mines,109,102,735,134,7.678899083,89
+Eastern Michigan University,195,163,1364,360,7.830769231,90
+Texas Tech University,66,101,416,123,7.833333333,91
+Baylor College of Medicine,21,41,124,57,7.857142857,92
+Florida International University,74,145,439,130,7.891891892,93
+University of Wyoming,88,87,609,162,7.909090909,94
+Temple University,47,55,319,111,7.957446809,95
+Louisiana Tech University,143,121,1019,223,7.972027972,96
+Texas Christian University,192,179,1352,283,7.973958333,97
+Long Island University,216,218,1508,360,7.990740741,98
+College of William and Mary,105,142,706,151,8.076190476,99
+Clark University,188,200,1334,242,8.159574468,100
+Albany Medical College,152,119,1123,255,8.171052632,101
+James Madison University,209,175,1544,311,8.224880383,102
+Fordham University,149,112,1115,225,8.234899329,103
+Oklahoma State University,67,79,473,139,8.23880597,104
+University of Arizona,20,64,101,48,8.25,105
+University of Kentucky,34,26,257,99,8.323529412,106
+Medical College of Wisconsin,61,98,411,125,8.344262295,107
+Ball State University,186,169,1389,279,8.376344086,108
+Hampton University,164,156,1224,265,8.414634146,109
+University of Central Florida,55,22,441,131,8.418181818,110
+Bradley University,224,208,1681,360,8.433035714,111
+Northern Arizona University,118,184,814,199,8.457627119,112
+North Carolina State University,24,16,187,70,8.458333333,113
+Fairfield University,187,213,1381,278,8.524064171,114
+Clarkson University,171,155,1303,271,8.526315789,115
+Arizona State University,22,47,141,67,8.545454545,116
+West Virginia University,69,96,494,142,8.550724638,117
+Portland State University,116,135,862,200,8.594827586,118
+University of Cincinnati,28,52,189,80,8.607142857,119
+University of Idaho,91,82,702,179,8.615384615,120
+Duke University,4,14,21,16,8.75,121
+Villanova University,155,166,1192,224,8.761290323,122
+Old Dominion University,104,138,776,192,8.788461538,123
+Clemson University,65,49,523,150,8.8,124
+Medical University of South Carolina,50,103,338,112,8.82,125
+Appalachian State University,199,216,1568,315,8.964824121,126
+University of New Hampshire,80,120,600,160,9,127
+Towson University,213,242,1678,324,9.014084507,128
+Florida Atlantic University,119,69,1008,230,9.050420168,129
+University of Arkansas for Medical Sciences,87,150,638,168,9.057471264,130
+Michigan Technological University,102,74,852,205,9.078431373,131
+Catholic University of America,141,132,1150,260,9.092198582,132
+Central Michigan University,172,157,1419,291,9.162790698,133
+Indiana State University,230,248,1865,360,9.186956522,134
+University of Memphis,115,151,909,212,9.217391304,135
+Wesleyan University,185,238,1483,186,9.302702703,136
+University of Georgia,27,40,212,73,9.333333333,137
+University of New Orleans,167,131,1433,295,9.365269461,138
+Cold Spring Harbor Laboratory,97,83,831,158,9.422680412,139
+University of the Pacific,219,207,1876,347,9.511415525,140
+Utah State University,68,76,576,159,9.588235294,141
+Western Washington University,176,197,1494,303,9.607954545,142
+University of Louisiana at Lafayette,95,154,764,190,9.663157895,143
+University of Rhode Island,94,125,785,188,9.680851064,144
+Butler University,247,257,2135,360,9.684210526,145
+Marquette University,134,148,1153,250,9.708955224,146
+College of the Holy Cross,241,253,2094,214,9.738589212,147
+East Tennessee State University,184,177,1623,323,9.782608696,148
+Western Michigan University,145,144,1291,272,9.896551724,149
+Worcester Polytechnic Institute,132,108,1201,233,9.916666667,150
+University of Scranton,255,171,2360,360,9.925490196,151
+Howard University,120,143,1053,239,9.966666667,152
+Georgia State University,62,129,490,143,9.983870968,153
+University of Pennsylvania,2,8,12,6,10,154
+Johns Hopkins University,1,4,6,12,10,155
+Chapman University,182,237,1586,316,10.01648352,156
+Illinois State University,153,173,1367,282,10.06535948,157
+University of Maine,96,104,864,171,10.08333333,158
+Rochester Institute of Technology,113,107,1033,236,10.08849558,159
+Wellesley College,183,199,1648,320,10.09289617,160
+Tennessee Technological University,178,198,1599,360,10.09550562,161
+Widener University,245,256,2220,360,10.10612245,162
+New Mexico State University,92,116,815,197,10.11956522,163
+Rowan University,177,235,1558,314,10.1299435,164
+Boise State University,131,140,1189,262,10.14503817,165
+Mount Holyoke College,203,240,1850,360,10.2955665,166
+Fairleigh Dickinson University,242,254,2238,360,10.29752066,167
+Sam Houston State University,202,204,1882,352,10.32673267,168
+Rockefeller University,41,27,398,26,10.36585366,169
+Trinity University,207,205,1950,296,10.41062802,170
+University of North Florida,194,162,1875,350,10.5,171
+Valdosta State University,251,259,2393,360,10.56573705,172
+Nova Southeastern University,144,194,1330,277,10.58333333,173
+New Mexico Institute of Mining and Technology,151,122,1479,300,10.60264901,174
+Harvey Mudd College,201,203,1935,360,10.63681592,175
+Wright State University,110,99,1073,246,10.65454545,176
+Washington State University,36,66,318,104,10.66666667,177
+Stevens Institute of Technology,130,95,1293,243,10.67692308,178
+Western University of Health Sciences,196,201,1892,360,10.67857143,179
+Smith College,197,239,1872,228,10.71573604,180
+Eastern Virginia Medical School,138,111,1383,286,10.82608696,181
+Humboldt State University,166,212,1614,360,11,182
+Western Kentucky University,180,161,1845,346,11.14444444,183
+Idaho State University,156,167,1584,317,11.22435897,184
+University of South Alabama,123,133,1248,268,11.22764228,185
+University of Washington,3,9,25,360,11.33333333,186
+University of Hartford,225,209,2376,360,11.48888889,187
+San Jose State University,126,193,1269,266,11.6031746,188
+Marshall University,157,168,1663,305,11.66242038,189
+North Carolina Central University,175,186,1863,360,11.70857143,190
+Duquesne University,160,97,1784,334,11.75625,191
+New Jersey Institute of Technology,83,62,915,215,11.77108434,192
+Arkansas State University,189,178,2051,360,11.79365079,193
+Jackson State University,142,185,1490,302,11.79577465,194
+Virginia Polytechnic Institute and State University,23,36,236,91,11.82608696,195
+South Dakota State University,106,183,1093,248,12.03773585,196
+Mercer University,136,165,1475,360,12.05882353,197
+South Dakota School of Mines and Technology,170,134,1923,328,12.1,198
+Rosalind Franklin University of Medicine and Science,161,160,1796,339,12.14906832,199
+North Dakota State University,78,92,879,210,12.44871795,200
+University of Tulsa,148,141,1709,289,12.5,201
+University of Southern Mississippi,107,93,1259,269,12.63551402,202
+Texas State University,108,230,1146,259,12.74074074,203
+Lewis & Clark College,204,189,2419,360,12.78431373,204
+Siena College,227,246,2707,360,13.00881057,205
+Eastern Washington University,221,220,2682,360,13.13122172,206
+University of Portland,234,182,2906,360,13.1965812,207
+University of North Dakota,93,105,1135,257,13.33333333,208
+Lawrence Technological University,222,190,2855,360,13.71621622,209
+Pittsburg State University,217,158,2864,360,13.92626728,210
+Salisbury University,190,174,2473,360,13.93157895,211
+Touro College,240,252,3173,360,14.27083333,212
+Mississippi State University,53,86,694,173,14.71698113,213
+Florida Agricultural and Mechanical University,127,149,1739,330,14.86614173,214
+Connecticut College,223,244,3079,360,14.90134529,215
+Kettering University,200,202,2830,332,15.16,216
+Cleveland State University,99,113,1442,294,15.70707071,217
+Ferris State University,239,251,3763,360,16.79497908,218
+Alfred University,211,114,3472,360,16.99526066,219
+University of Louisiana at Monroe,215,206,3511,360,17.28837209,220
+Spelman College,220,176,3644,360,17.36363636,221
+University of Dayton,85,73,1418,238,17.54117647,222
+Bryn Mawr College,179,187,2978,360,17.68156425,223
+Morehouse School of Medicine,129,147,2183,360,18.0620155,224
+Milwaukee School of Engineering,206,164,3687,360,18.69417476,225
+Tuskegee University,163,211,2918,360,19.19631902,226
+Jacksonville State University,205,241,3722,360,19.33170732,227
+Virginia State University,181,236,3346,360,19.79005525,228
+Delaware State University,150,232,2759,360,19.94,229
+Wichita State University,100,159,1836,342,19.95,230
+Meharry Medical College,162,196,3569,360,23.24074074,231
+Uniformed Services University of the Health Sciences,44,229,796,195,23.29545455,232

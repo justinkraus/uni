@@ -54,10 +54,14 @@ h2 {
     <h2>Comparing University Research and Development Output with Spending</h2>
     <h3>Research and Development</h3>
     <p>Research and development (R&D) is a competitive feature of modern universities. Better R&D leads to improved reputation and connections with private industry.</p>
-    <p>R&D is shown on the axes as the number of patents and quality of the research program (influential citations in highly regarded scientific journals). Bubble colors correspond to the national rank of the University.</p>
+    <p>R&D is shown on the axes as the number of patents and quality of the research program (influential citations in highly regarded scientific journals). </p>
     <h3>Spending</h3>
-    <p>Spending is reflected in the size of the bubbles. Click the button to flip how the spending scale is reflected.</p>
+    <p>Bubble size represents how much the university spends on R&D. Click the button to flip how the spending scale is reflected.</p>
     <button id="Radius">Flip Radius</button>
+    <h3>Value</h3>
+    <p>Bubble colors show how the research and development output measures against spending, where:
+      <pre>Value = (Patents + Research Rank) / Spending</pre></p>
+    <hr>
     <p><a href="https://github.com/justinkraus/uni">Code and Methodology</a></p>
   </div>
 
@@ -80,7 +84,7 @@ var svg = d3.select("#my_dataviz")
           "translate(" + margin.left + "," + margin.top + ")");
 
 //Read the data
-d3.csv("university_iter4.csv", function(data) {
+d3.csv("university_iter6.csv", function(data) {
 
   // ---------------------------//
   //       AXIS  AND SCALE      //
@@ -88,7 +92,7 @@ d3.csv("university_iter4.csv", function(data) {
 
   // Add X axis
   var x = d3.scaleLinear()
-    .domain([0, 260])
+    .domain([260, 0])
     .range([ 0, width ]);
   svg.append("g")
     .attr("transform", "translate(0," + height + ")")
@@ -106,18 +110,18 @@ d3.csv("university_iter4.csv", function(data) {
       .attr("text-anchor", "end")
       .attr("x", 0 + margin.left/4)
       .attr("y", height + margin.bottom/2 )
-      .text("More");
+      .text("Less");
 
     svg.append("text")
       .attr("text-anchor", "end")
       .attr("x", width)
       .attr("y", height + margin.bottom/2 )
-      .text("Less");
+      .text("More");
 
 
   // Add Y axis
   var y = d3.scaleLinear()
-    .domain([0, 3800])
+    .domain([3800, 0])
     .range([ height, 0]);
   svg.append("g")
     .call(d3.axisLeft(y).ticks(0));
@@ -136,29 +140,34 @@ d3.csv("university_iter4.csv", function(data) {
       .attr("text-anchor", "end")
       .attr("x", 0 - margin.left/10)
       .attr("y", height )
-      .text("Higher Regard")
+      .text("Lower Regard")
       // .attr("text-anchor", "start")
 
   svg.append("text")
     .attr("text-anchor", "end")
     .attr("x", 0 - margin.left/10)
     .attr("y", 0 )
-    .text("Lower Regard")
+    .text("Higher Regard")
     // .attr("text-anchor", "start")
 
   // Add a scale for bubble size
   var z = d3.scaleLinear()
     .domain([1, 255])
-    .range([ 2, 20]);
+    .range([ 3, 13]);
 
   var z1 = d3.scaleLinear()
     .domain([1, 255])
-    .range([ 20, 2]);
+    .range([ 13, 3]);
 
   // Add a scale for bubble color
   var myColor = d3.scaleLinear()
-    .domain([0, 360])
-    .range(d3.schemeSet1);
+    .domain([1, 232])
+    .range(['red', 'darkblue']);
+
+    // Scale for National Rank
+  // var myColor = d3.scaleLinear()
+  //   .domain([0, 360])
+  //   .range(d3.schemeSet1);
 
 
   // ---------------------------//
@@ -201,24 +210,6 @@ d3.csv("university_iter4.csv", function(data) {
 
 
   // ---------------------------//
-  //       HIGHLIGHT GROUP      //
-  // ---------------------------//
-
-  // What to do when one group is hovered
-  var highlight = function(d){
-    // reduce opacity of all groups
-    d3.selectAll(".bubbles").style("opacity", .05)
-    // expect the one that is hovered
-    d3.selectAll("."+d).style("opacity", 1)
-  }
-
-  // And when it is not hovered anymore
-  var noHighlight = function(d){
-    d3.selectAll(".bubbles").style("opacity", 1)
-  }
-
-
-  // ---------------------------//
   //       CIRCLES              //
   // ---------------------------//
 
@@ -232,7 +223,8 @@ d3.csv("university_iter4.csv", function(data) {
       .attr("cx", function (d) { return x(d.PatentsRank); } )
       .attr("cy", function (d) { return y(d.ResearchRank); } )
       .attr("r", function (d) { return z(d.RDRank); } )
-      .style("fill", function (d) { return myColor(d.NationalRank); } )
+      .style("fill", function (d) { return myColor(d.RanktoCostRank); } )
+      // .style("fill", function (d) { return myColor(d.NationalRank); } )
     // -3- Trigger the functions for hover
     .on("mouseover", showTooltip )
     .on("mousemove", moveTooltip )
@@ -312,8 +304,8 @@ d3.csv("university_iter4.csv", function(data) {
         .labelFormat(d3.format(".0f"))
         .orient("vertical")
         .shapePadding(5)
-        .labels(["Top", "Mid", "Bottom"])
-        .title("National Rank");
+        .labels(["High", "Mid", "Low"])
+        .title("Value");
 
     svg.append("g")
         .attr("class", "colorLegend")
